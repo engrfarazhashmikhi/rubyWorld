@@ -6,9 +6,9 @@
 
 class RubyFiles
 
-  def fileOpen(fileName = nill, mode = nil)
+  def fileOpen(fileName = nill)
 
-    file = File.open(fileName, mode)
+    file = File.open(fileName, "r")
 
     puts file.read()
 
@@ -29,15 +29,19 @@ class RubyFiles
 
 end
 
-file_to_open = "notes.txt"
-open_in_mode = "r"
-text_to_write = "I LOVE Computer Programming"
+puts "Enter file name to open: "
+file_to_open = gets().chomp().to_s
+
+puts "Enter text to write: "
+text_to_write = gets().chomp().to_s
 
 myFile = RubyFiles.new()
+=begin
 puts "Before"
 myFile.fileOpen(file_to_open, open_in_mode)
 puts "File Write"
 myFile.fileWrite(file_to_open, text_to_write)
 puts "After"
 myFile.fileOpen(file_to_open, open_in_mode)
+=end
 
