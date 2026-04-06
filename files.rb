@@ -32,8 +32,8 @@ end
 puts "Enter file name to open: "
 file_to_open = gets().chomp().to_s
 
-puts "Enter text to write: "
-text_to_write = gets().chomp().to_s
+#puts "Enter text to write: "
+#text_to_write = gets().chomp().to_s
 
 myFile = RubyFiles.new()
 =begin
@@ -44,4 +44,6 @@ myFile.fileWrite(file_to_open, text_to_write)
 puts "After"
 myFile.fileOpen(file_to_open, open_in_mode)
 =end
+
+myFile.fileOpen(file_to_open)
 
