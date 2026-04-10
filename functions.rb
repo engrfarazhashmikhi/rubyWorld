@@ -6,7 +6,7 @@ module Functions
   def self.getInputFromUser(message = nill)
     puts "#{message.to_s}"
     statement = gets().chomp().to_s
-    statement
+    return statement
   end
 
   def self.generateBill
@@ -16,6 +16,13 @@ module Functions
     platform_fee = self.getInputFromUser("Enter Extra Charges: ")
     subtotal = ((order_price.to_f + standard_delivery.to_f + platform_fee.to_f)-discount_applied.to_f)
     return subtotal.to_f
+  end
+
+  def self.checkOut()
+    getBillPrice = self.generateBill().to_f
+    payment = self.getInputFromUser("Payment Please: ").to_f
+    change = (payment - getBillPrice)
+    return change
   end
 end
 
