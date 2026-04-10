@@ -22,7 +22,7 @@ module Functions
     getBillPrice = self.generateBill().to_f
     payment = self.getInputFromUser("Payment Please: ").to_f
     change = (payment - getBillPrice)
-    return change
+    return { "Payment" => payment, "Your Change: " => change } 
   end
 end
 
