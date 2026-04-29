@@ -1,13 +1,26 @@
 require_relative "ruby_modules.rb"
 
-greetings = "Assalam-O-Alaikum"
-userName = nil
+def display()
+  greetings = "Assalam-O-Alaikum"
+  userName = nil
 
-puts "Enter your name please: ";
-userName = gets.chomp()
+  puts "Enter your name please: ";
+  userName = gets.chomp()
 
-puts(greetings + " " + userName)
-puts("ENJOY coding in Ruby Programming Language.")
+  puts(greetings + " " + userName)
+  puts("ENJOY coding in Ruby Programming Language.")
+end
 
-RubyModules.greetings()
+begin
+
+  display()
+
+rescue Exception => e
+
+  puts "Errr: " + e.to_s
+
+ensure
+  puts("Good Bye...")
+
+end
 
