@@ -14,16 +14,18 @@ module Functions
     standard_delivery = self.getInputFromUser("Enter delivery charges: ").to_f
     discount_applied = self.getInputFromUser("Enter discount applied: ").to_f
     platform_fee = self.getInputFromUser("Enter Extra Charges: ").to_f
-    tax_applied = (order_price * (15/100)).to_f
+    tax_applied = (order_price * 0.15).to_f
     subtotal = ((order_price + tax_applied + standard_delivery + platform_fee ) - discount_applied)
-    return subtotal.to_f
+    return [subtotal.to_f, tax_applied]
   end
 
   def self.checkOut()
-    getBillPrice = (self.generateBill().to_f.round(2))
+    getBillPrice = (self.generateBill())
+    tax_paid = (getBillPrice[1].to_f)
+    billPrice = (getBillPrice[0].to_f.round(2))
     payment = (self.getInputFromUser("Payment Please: ").to_f.round(2))
-    change = ((payment - getBillPrice).to_f.round(2))
-    return { :Payment  => payment, :Change  => change, :Subtotal => getBillPrice }
+    change = ((payment - billPrice).to_f.round(2))
+    return { :Payment  => payment, :Change  => change, :Subtotal => billPrice, :Tax => tax_paid }
   end
 end
 
