@@ -9,12 +9,17 @@ module Functions
     return statement
   end
 
+  def self.calcTax(price_amount = 0.00, tax_rate = 0.00)
+    calculatedTAX = (price_amount.to_f * tax_rate.to_f).to_f
+    calculatedTAX
+  end
+
   def self.generateBill()
     order_price = self.getInputFromUser("Enter Order Price: ").to_f
     standard_delivery = self.getInputFromUser("Enter delivery charges: ").to_f
     discount_applied = self.getInputFromUser("Enter discount applied: ").to_f
     platform_fee = self.getInputFromUser("Enter Extra Charges: ").to_f
-    tax_applied = (order_price * 0.15).to_f
+    tax_applied = self.calcTax(order_price, 0.15).to_f
     subtotal = ((order_price + tax_applied + standard_delivery + platform_fee ) - discount_applied)
     return [subtotal.to_f, tax_applied]
   end
@@ -22,9 +27,9 @@ module Functions
   def self.checkOut()
     getBillPrice = (self.generateBill())
     tax_paid = (getBillPrice[1].to_f)
-    billPrice = (getBillPrice[0].to_f.round(2))
-    payment = (self.getInputFromUser("Payment Please: ").to_f.round(2))
-    change = ((payment - billPrice).to_f.round(2))
+    billPrice = (getBillPrice[0].to_f)
+    payment = (self.getInputFromUser("Payment Please: ").to_f)
+    change = ((payment - billPrice).to_f)
     return { :Payment  => payment, :Change  => change, :Subtotal => billPrice, :Tax => tax_paid }
   end
 end
