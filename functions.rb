@@ -20,8 +20,9 @@ module Functions
     discount_applied = self.getInputFromUser("Enter discount applied: ").to_f
     platform_fee = self.getInputFromUser("Enter Extra Charges: ").to_f
     tax_applied = self.calcTax(order_price, 0.15).to_f
-    subtotal = ((order_price + tax_applied + standard_delivery + platform_fee ) - discount_applied)
-    return [subtotal.to_f, tax_applied]
+    # subtotal = ((order_price + tax_applied + standard_delivery + platform_fee ) - discount_applied)
+    subtotal = (((((order_price - discount_applied) + standard_delivery) + platform_fee)).to_f)
+    [subtotal.to_f, tax_applied]
   end
 
   def self.checkOut()
@@ -30,7 +31,7 @@ module Functions
     billPrice = (getBillPrice[0].to_f)
     payment = (self.getInputFromUser("Payment Please: ").to_f)
     change = ((payment - billPrice).to_f)
-    return { :Payment  => payment, :Change  => change, :Subtotal => billPrice, :Tax => tax_paid }
+    return { :Payment  => payment.round(2), :Change  => change.round(2), :Subtotal => billPrice.round(2), :Tax => tax_paid.round(2) }
   end
 end
 
