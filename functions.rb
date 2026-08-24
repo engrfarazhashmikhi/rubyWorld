@@ -33,5 +33,11 @@ module Functions
     change = ((payment - billPrice).to_f)
     return { :Payment  => payment.round(2), :Change  => change.round(2), :Subtotal => billPrice.round(2), :Tax => tax_paid.round(2) }
   end
-end
 
+  def self.feet_to_meters()
+    value_in_feet = (self.getInputFromUser("Enter amount of feet: ").to_f)
+    formula = (3.281).to_f
+    calculate = (value_in_feet / formula).to_f
+    (calculate).to_s
+  end
+end
