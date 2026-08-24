@@ -43,7 +43,7 @@ module Functions
   def self.meters_to_feet()
     value_in_meters = (self.getInputFromUser("Enter amount of meters: ").to_f)
     formula = (3.281).to_f
-    calculate = (value_in_feet * formula).to_f
+    calculate = (value_in_meters * formula).to_f
     (calculate).to_s
   end
 end
