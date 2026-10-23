@@ -21,7 +21,7 @@ begin
 
   result = Functions.meters_to_feet()
   
-  puts("Result: "+result)
+  puts("Result: "+result + " Feets")
 
 rescue Exception => e
 
@@ -31,4 +31,3 @@ ensure
   puts("Good Bye...")
 
 end
-
