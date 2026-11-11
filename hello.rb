@@ -15,13 +15,7 @@ end
 
 begin
 
-  # display()
-
-#  result = Functions.feet_to_meters()
-
-  result = Functions.meters_to_feet()
-  
-  puts("Result: "+result + " Feets")
+  display()
 
 rescue Exception => e
 
