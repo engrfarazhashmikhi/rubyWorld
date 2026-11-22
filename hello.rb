@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -wKU
 require_relative "ruby_modules.rb"
-require_relative "functions"
+require_relative "functions.rb"
 
 def display()
   greetings = "Assalam-O-Alaikum"
