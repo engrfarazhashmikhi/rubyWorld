@@ -9,6 +9,11 @@ module Functions
     return statement
   end
 
+  def self.giveOutPut(outputStatement = nill)
+    getOutPut = (outputStatement).to_s
+    puts(getOutPut)
+  end
+
   def self.calcTax(price_amount = 0.00, tax_rate = 0.00)
     calculatedTAX = (price_amount.to_f * tax_rate.to_f).to_f
     calculatedTAX
@@ -45,6 +50,40 @@ module Functions
     formula = (3.281).to_f
     calculate = (value_in_meters * formula).to_f
     (calculate).to_s
+  end
+
+  def self.carCostCalculator()
+    # Fuel Tank:  36  Litres
+    # Fuel Economy: 13.5  KM/Litres
+    # Capicity: 6.5 
+    # Fuel:   362 Litres
+    # Distance Cover: 486 KM/Full Tank
+    # Full Tank:  13032 /=PKR
+    # Full Tank Distance: 26.8148148148148  PKR/KM
+    # Cover Distance: 20  KM/
+    # Total Cost: 536.296296296296  
+
+    fuelTank = self.getInputFromUser("Enter Fuel Tank Capacity: ").to_f
+    fuelPrice = self.getInputFromUser("Enter Fuel Price Per Litre: ").to_f
+    fuelEconomy = self.getInputFromUser("Enter Average: ").to_f
+    fullTankCost = (fuelTank * fuelPrice).to_f
+    distanceCover = (fuelTank * fuelEconomy).to_f
+    fullTankDistance = (fullTankCost / distanceCover).to_f 
+    coverDistance = self.getInputFromUser("Enter Distance To Cover in KM: ").to_f
+    totalCost =  (fullTankDistance * coverDistance).to_f
+
+    self.giveOutPut("Fuel Tank Capacity: " + (fuelTank.to_s) + " Litres")
+    self.giveOutPut("Fuel Price: " + (fuelPrice.to_s) + "/Litre")
+
+    self.giveOutPut("Fuel Average: " + (fuelEconomy.to_s) + "/Litre")
+    self.giveOutPut("Distance Cover: " + (distanceCover.to_s) + " Full Tank KM")
+
+    self.giveOutPut("Full Fuel Tank Distance Cover: " + (fullTankDistance.to_s + " KM"))
+    self.giveOutPut("Distance To cover: " + (coverDistance.to_s) + " KM")
+
+    self.giveOutPut("Distance Cost: " + (totalCost.to_s) + (coverDistance.to_s) + "/=")
+    self.giveOutPut("Full Tank Cost: " + (fullTankCost.to_s) + "/=")
+
   end
 end
 
